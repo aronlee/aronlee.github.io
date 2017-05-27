@@ -1,6 +1,7 @@
 const copies = [
     {
-       
+        from: 'index.html',
+        to: 'index.html'
     }
 ]
 

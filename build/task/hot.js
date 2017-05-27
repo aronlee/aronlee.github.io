@@ -82,13 +82,15 @@ app.use(webpackDevMiddleware(compiler, {
 	// Turn off the server-side rendering mode. See Server-Side Rendering part for more info.
 }))
 
+app.use(express.static('dist'))
+
 app.use(webpackHotMiddleware(compiler, {
     log: false,
     // path: "/dist",
     // heartbeat: 2000
 }))
 
-app.listen("3003", function () {
+app.listen("8099", function () {
     process.stdout.clearLine()
     process.stdout.cursorTo(0)
     console.log(`dev-server at ${chalk.magenta.underline(`http://${ip.address()}:${this.address().port}`)}`)

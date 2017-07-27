@@ -1,2 +1,0 @@
-# aronlee
-a blog

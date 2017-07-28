@@ -389,7 +389,18 @@
       
         
           
-            
+            <h4 id="1-首先停止mysql服务-在终端输入"><a href="#1-首先停止mysql服务-在终端输入" class="headerlink" title="1.  首先停止mysql服务, 在终端输入"></a>1.  首先停止mysql服务, 在终端输入</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net <span class="keyword">stop</span> mysql</div></pre></td></tr></table></figure>
+<h4 id="2-如果已配置path-则在终端直接输入，不然就到mysql-bin下输入"><a href="#2-如果已配置path-则在终端直接输入，不然就到mysql-bin下输入" class="headerlink" title="2.  如果已配置path 则在终端直接输入，不然就到mysql/bin下输入"></a>2.  如果已配置path 则在终端直接输入，不然就到mysql/bin下输入</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqld <span class="comment">--skip-grant-tables</span></div></pre></td></tr></table></figure>
+<h4 id="3-此时打开另一个终端"><a href="#3-此时打开另一个终端" class="headerlink" title="3. 此时打开另一个终端"></a>3. 此时打开另一个终端</h4><p>输入 mysql 然后输入 use mysql<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; mysql </div><div class="line">mysql&gt; use mysql</div></pre></td></tr></table></figure></p>
+<p><img src="/images/2017-07-28/clipboard.png" alt="clipboard"></p>
+<h4 id="4-设置密码"><a href="#4-设置密码" class="headerlink" title="4. 设置密码"></a>4. 设置密码</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; UPDATE user SET Password=PASSWORD('newpassword') where USER='root' and host='root' or host='localhost';</div><div class="line">// 把空的用户密码都修改成非空的密码就行了。（记得结尾的“;”号别少了,不然不是一个sql语句)</div></pre></td></tr></table></figure>
+<p>然后出现一个异常:<br><img src="/images/2017-07-28/clipboard2.png" alt="clipboard"></p>
+<p>查了下是Password这个列改成了authentication_string<br><img src="/images/2017-07-28/clipboard3.png" alt="clipboard"></p>
+<p>只需要吧上面的Password改成authentication_string就行了<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; UPDATE user SET authentication_string=PASSWORD('newpassword') where USER='root' and host='root' or host='localhost';</div></pre></td></tr></table></figure></p>
+<p><img src="/images/2017-07-28/clipboard4.png" alt="clipboard"></p>
+<p>ok 此时已经设置成功！</p>
+<h4 id="5-关掉mysqld-进程，然后用刚设置的用户名，密码登录成功！"><a href="#5-关掉mysqld-进程，然后用刚设置的用户名，密码登录成功！" class="headerlink" title="5. 关掉mysqld 进程，然后用刚设置的用户名，密码登录成功！"></a>5. 关掉mysqld 进程，然后用刚设置的用户名，密码登录成功！</h4><p><img src="/images/2017-07-28/clipboard5.png" alt="clipboard"></p>
+
           
         
       

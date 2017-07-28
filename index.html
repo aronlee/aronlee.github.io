@@ -288,6 +288,157 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://aronlee.github.io/2017/07/28/windows下mysql安装异常/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aron Lee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/dog.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aron's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/28/windows下mysql安装异常/" itemprop="url">windows下mysql安装异常</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-28T15:02:27+08:00">
+                2017-07-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/07/28/windows下mysql安装异常/" class="leancloud_visitors" data-flag-title="windows下mysql安装异常">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Fatal-error-Can’t-open-and-lock-privilege-tables-Table-‘mysql-user’-doesn’t-exist"><a href="#Fatal-error-Can’t-open-and-lock-privilege-tables-Table-‘mysql-user’-doesn’t-exist" class="headerlink" title="Fatal error: Can’t open and lock privilege tables: Table ‘mysql.user’ doesn’t exist"></a>Fatal error: Can’t open and lock privilege tables: Table ‘mysql.user’ doesn’t exist</h2><p>在windows安装mysql（mac和linux下没遇到过）出现如下<br>终端输入<br><code>net start mysql</code><br>出现如下<br><img src="/images/2017-07-28/clipboard1-1.png" alt="clipboard"></p>
+<p>然后输入<br><code>NET HELPMSG 3534</code><br>然而并没有发现任何错误</p>
+<p>输入 <code>mysql</code> 还是无效</p>
+<p>输入<code>mysqld --console</code> 看下日志<br><img src="/images/2017-07-28/clipboard1-3.png" alt="clipboard"><br>出现错误：<br><code>Fatal error: Can&#39;t open and lock privilege tables: Table &#39;mysql.user&#39; doesn&#39;t exist</code></p>
+<p>从网上找到一个<a href="https://stackoverflow.com/questions/34516664/cant-open-and-lock-privilege-tables-table-mysql-user-doesnt-exist" target="_blank" rel="external">解决方案</a><br><code>mysqld --initialize [with random root password]</code><br><code>mysqld --initialize-insecure [without random root password]</code><br>上面的是使用随机root密码下面的不是，我们选择输入<br><code>mysqld --initialize-insecure</code></p>
+<p>然后启动服务<br><code>net start mysql</code></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/images/2017-07-28/clipboard1-4.png" alt="clipboard"></h2><p>OK 一切搞定！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://aronlee.github.io/2017/07/27/windows下MySQL初次密码设置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -389,9 +540,9 @@
       
         
           
-            <h4 id="1-首先停止mysql服务-在终端输入"><a href="#1-首先停止mysql服务-在终端输入" class="headerlink" title="1.  首先停止mysql服务, 在终端输入"></a>1.  首先停止mysql服务, 在终端输入</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net <span class="keyword">stop</span> mysql</div></pre></td></tr></table></figure>
-<h4 id="2-如果已配置path-则在终端直接输入，不然就到mysql-bin下输入"><a href="#2-如果已配置path-则在终端直接输入，不然就到mysql-bin下输入" class="headerlink" title="2.  如果已配置path 则在终端直接输入，不然就到mysql/bin下输入"></a>2.  如果已配置path 则在终端直接输入，不然就到mysql/bin下输入</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqld <span class="comment">--skip-grant-tables</span></div></pre></td></tr></table></figure>
-<h4 id="3-此时打开另一个终端"><a href="#3-此时打开另一个终端" class="headerlink" title="3. 此时打开另一个终端"></a>3. 此时打开另一个终端</h4><p>输入 mysql 然后输入 use mysql<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; mysql </div><div class="line">mysql&gt; use mysql</div></pre></td></tr></table></figure></p>
+            <h4 id="1-首先停止mysql服务-在终端输入"><a href="#1-首先停止mysql服务-在终端输入" class="headerlink" title="1.  首先停止mysql服务, 在终端输入"></a>1.  首先停止mysql服务, 在终端输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net stop mysql</div></pre></td></tr></table></figure>
+<h4 id="2-如果已配置path-则在终端直接输入，不然就到mysql-bin下输入"><a href="#2-如果已配置path-则在终端直接输入，不然就到mysql-bin下输入" class="headerlink" title="2.  如果已配置path 则在终端直接输入，不然就到mysql/bin下输入"></a>2.  如果已配置path 则在终端直接输入，不然就到mysql/bin下输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqld --skip-grant-tables</div></pre></td></tr></table></figure>
+<h4 id="3-此时打开另一个终端"><a href="#3-此时打开另一个终端" class="headerlink" title="3. 此时打开另一个终端"></a>3. 此时打开另一个终端</h4><p>输入 mysql 然后输入 use mysql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; mysql </div><div class="line">mysql&gt; use mysql</div></pre></td></tr></table></figure></p>
 <p><img src="/images/2017-07-28/clipboard.png" alt="clipboard"></p>
 <h4 id="4-设置密码"><a href="#4-设置密码" class="headerlink" title="4. 设置密码"></a>4. 设置密码</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; UPDATE user SET Password=PASSWORD('newpassword') where USER='root' and host='root' or host='localhost';</div><div class="line">// 把空的用户密码都修改成非空的密码就行了。（记得结尾的“;”号别少了,不然不是一个sql语句)</div></pre></td></tr></table></figure>
 <p>然后出现一个异常:<br><img src="/images/2017-07-28/clipboard2.png" alt="clipboard"></p>
@@ -480,7 +631,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

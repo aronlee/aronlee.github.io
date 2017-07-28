@@ -105,7 +105,7 @@
 <meta property="og:image" content="https://aronlee.github.io/images/2017-07-28/clipboard3.png">
 <meta property="og:image" content="https://aronlee.github.io/images/2017-07-28/clipboard4.png">
 <meta property="og:image" content="https://aronlee.github.io/images/2017-07-28/clipboard5.png">
-<meta property="og:updated_time" content="2017-07-28T06:58:18.000Z">
+<meta property="og:updated_time" content="2017-07-28T07:04:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="windows下MySQL初次密码设置">
 <meta name="twitter:description" content="1.  首先停止mysql服务, 在终端输入1net stop mysql 2.  如果已配置path 则在终端直接输入，不然就到mysql/bin下输入1mysqld --skip-grant-tables 3. 此时打开另一个终端输入 mysql 然后输入 use mysql12mysql&amp;gt; mysql mysql&amp;gt; use mysql  4. 设置密码12mysql&amp;gt; UP">
@@ -393,9 +393,9 @@
       
 
       
-        <h4 id="1-首先停止mysql服务-在终端输入"><a href="#1-首先停止mysql服务-在终端输入" class="headerlink" title="1.  首先停止mysql服务, 在终端输入"></a>1.  首先停止mysql服务, 在终端输入</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net <span class="keyword">stop</span> mysql</div></pre></td></tr></table></figure>
-<h4 id="2-如果已配置path-则在终端直接输入，不然就到mysql-bin下输入"><a href="#2-如果已配置path-则在终端直接输入，不然就到mysql-bin下输入" class="headerlink" title="2.  如果已配置path 则在终端直接输入，不然就到mysql/bin下输入"></a>2.  如果已配置path 则在终端直接输入，不然就到mysql/bin下输入</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqld <span class="comment">--skip-grant-tables</span></div></pre></td></tr></table></figure>
-<h4 id="3-此时打开另一个终端"><a href="#3-此时打开另一个终端" class="headerlink" title="3. 此时打开另一个终端"></a>3. 此时打开另一个终端</h4><p>输入 mysql 然后输入 use mysql<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; mysql </div><div class="line">mysql&gt; use mysql</div></pre></td></tr></table></figure></p>
+        <h4 id="1-首先停止mysql服务-在终端输入"><a href="#1-首先停止mysql服务-在终端输入" class="headerlink" title="1.  首先停止mysql服务, 在终端输入"></a>1.  首先停止mysql服务, 在终端输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net stop mysql</div></pre></td></tr></table></figure>
+<h4 id="2-如果已配置path-则在终端直接输入，不然就到mysql-bin下输入"><a href="#2-如果已配置path-则在终端直接输入，不然就到mysql-bin下输入" class="headerlink" title="2.  如果已配置path 则在终端直接输入，不然就到mysql/bin下输入"></a>2.  如果已配置path 则在终端直接输入，不然就到mysql/bin下输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqld --skip-grant-tables</div></pre></td></tr></table></figure>
+<h4 id="3-此时打开另一个终端"><a href="#3-此时打开另一个终端" class="headerlink" title="3. 此时打开另一个终端"></a>3. 此时打开另一个终端</h4><p>输入 mysql 然后输入 use mysql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; mysql </div><div class="line">mysql&gt; use mysql</div></pre></td></tr></table></figure></p>
 <p><img src="/images/2017-07-28/clipboard.png" alt="clipboard"></p>
 <h4 id="4-设置密码"><a href="#4-设置密码" class="headerlink" title="4. 设置密码"></a>4. 设置密码</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; UPDATE user SET Password=PASSWORD('newpassword') where USER='root' and host='root' or host='localhost';</div><div class="line">// 把空的用户密码都修改成非空的密码就行了。（记得结尾的“;”号别少了,不然不是一个sql语句)</div></pre></td></tr></table></figure>
 <p>然后出现一个异常:<br><img src="/images/2017-07-28/clipboard2.png" alt="clipboard"></p>
@@ -436,6 +436,22 @@
       
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/28/windows下mysql安装异常/" rel="prev" title="windows下mysql安装异常">
+                windows下mysql安装异常 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
@@ -505,7 +521,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[windows下mysql安装异常]]></title>
+    <url>%2F2017%2F07%2F28%2Fwindows%E4%B8%8Bmysql%E5%AE%89%E8%A3%85%E5%BC%82%E5%B8%B8%2F</url>
+    <content type="text"><![CDATA[Fatal error: Can’t open and lock privilege tables: Table ‘mysql.user’ doesn’t exist在windows安装mysql（mac和linux下没遇到过）出现如下终端输入net start mysql出现如下 然后输入NET HELPMSG 3534然而并没有发现任何错误 输入 mysql 还是无效 输入mysqld --console 看下日志出现错误：Fatal error: Can&#39;t open and lock privilege tables: Table &#39;mysql.user&#39; doesn&#39;t exist 从网上找到一个解决方案mysqld --initialize [with random root password]mysqld --initialize-insecure [without random root password]上面的是使用随机root密码下面的不是，我们选择输入mysqld --initialize-insecure 然后启动服务net start mysql OK 一切搞定！]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[windows下MySQL初次密码设置]]></title>
     <url>%2F2017%2F07%2F27%2Fwindows%E4%B8%8BMySQL%E5%88%9D%E6%AC%A1%E5%AF%86%E7%A0%81%E8%AE%BE%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[1. 首先停止mysql服务, 在终端输入1net stop mysql 2. 如果已配置path 则在终端直接输入，不然就到mysql/bin下输入1mysqld --skip-grant-tables 3. 此时打开另一个终端输入 mysql 然后输入 use mysql12mysql&gt; mysql mysql&gt; use mysql 4. 设置密码12mysql&gt; UPDATE user SET Password=PASSWORD('newpassword') where USER='root' and host='root' or host='localhost';// 把空的用户密码都修改成非空的密码就行了。（记得结尾的“;”号别少了,不然不是一个sql语句) 然后出现一个异常: 查了下是Password这个列改成了authentication_string 只需要吧上面的Password改成authentication_string就行了1mysql&gt; UPDATE user SET authentication_string=PASSWORD('newpassword') where USER='root' and host='root' or host='localhost'; ok 此时已经设置成功！ 5. 关掉mysqld 进程，然后用刚设置的用户名，密码登录成功！]]></content>
